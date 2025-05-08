@@ -4,6 +4,9 @@
             <img src="{{ asset('nightmare-darters-logo-min.png') }}" alt="Logo" class="h-[50px] w-[50px]">
             <span class="text-white font-semibold">Nightmare Darters - Historie</span>
         </span>
+        <div>
+            <livewire:live-viewer-counter />
+        </div>
         <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
             <livewire:all-last-matches />
         </div>

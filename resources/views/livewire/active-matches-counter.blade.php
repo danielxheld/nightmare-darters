@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Livewire\Volt\Component;
 use App\Models\DartMatch;
+use Illuminate\Support\Facades\DB;
 
 new class extends Component {
     public $matches;
