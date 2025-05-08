@@ -6,11 +6,6 @@ use App\Models\DartMatch;
 
 new class extends Component {
     public $matches;
-    public int $homeScore;
-    public int $guestScore;
-    public string $homeName;
-    public string $guestName;
-    public bool $confirmEnd = false;
 
     public function mount(): void
     {
