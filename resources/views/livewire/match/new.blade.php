@@ -49,8 +49,8 @@ new class extends Component {
 
     <x-match.layout>
         <form wire:submit="createMatch" class="my-6 w-full space-y-6">
-            <flux:input wire:model="guestName" :label="__('Gast - Name')" type="text" required autofocus/>
             <flux:input wire:model="homeName" :label="__('Heim - Name')" type="text" required autofocus/>
+            <flux:input wire:model="guestName" :label="__('Gast - Name')" type="text" required autofocus/>
 
             <div class="flex items-center gap-4">
                 <div class="flex items-center justify-end">
