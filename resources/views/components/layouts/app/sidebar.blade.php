@@ -7,7 +7,7 @@
         <flux:sidebar sticky stashable class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
-            <a href="#" class="me-5 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
+            <a href="#" class="me-5 text-white flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
                 Nightmare-Darters
             </a>
 
@@ -40,7 +40,7 @@
                                     </span>
                                 </span>
 
-                                <div class="grid flex-1 text-start text-sm leading-tight">
+                                <div class="grid flex-1 text-start text-sm leading-tight text-white">
                                     <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
                                     <span class="truncate text-xs">{{ auth()->user()->email }}</span>
                                 </div>
@@ -92,7 +92,7 @@
                                     </span>
                                 </span>
 
-                                <div class="grid flex-1 text-start text-sm leading-tight">
+                                <div class="grid flex-1 text-start text-sm leading-tight text-white">
                                     <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
                                     <span class="truncate text-xs">{{ auth()->user()->email }}</span>
                                 </div>
