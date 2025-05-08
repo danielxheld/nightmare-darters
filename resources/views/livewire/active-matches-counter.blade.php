@@ -13,7 +13,7 @@ new class extends Component {
     }
 } ?>
 
-<div>
+<div wire:poll.500ms>
     @if (!$matches->count())
         <div class="relative aspect-video rounded-xl border border-neutral-200 dark:border-neutral-700">
             <div class="h-full text-white p-6 rounded-2xl shadow-xl max-w-lg mx-auto space-y-6">

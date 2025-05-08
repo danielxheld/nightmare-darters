@@ -13,8 +13,8 @@
 
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')" class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>@if (Auth::check()) {{ __('Mein Match') }} @else {{ __('Login') }} @endif</flux:navlist.item>
-                    <flux:navlist.item icon="" :href="route('home')" :current="request()->routeIs('home')" wire:navigate>{{ __('Live Matches') }}</flux:navlist.item>
+                    <flux:navlist.item icon="" :href="route('home')" :current="request()->routeIs('home')" wire:navigate>{{ __('Live Spiele') }}</flux:navlist.item>
+                    <flux:navlist.item icon="" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>@if (Auth::check()) {{ __('Mein Match') }} @else {{ __('Login') }} @endif</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
