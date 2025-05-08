@@ -30,11 +30,11 @@ new class extends Component {
             <div class="text-white p-6 rounded-2xl shadow-xl max-w-lg mx-auto space-y-6">
                 <div class="grid grid-cols-2 text-center text-sm font-semibold text-neutral-400">
                     <div>
-                        <div class="text-red-400 uppercase">Home</div>
+                        <div class="text-red-400 uppercase">Heim</div>
                         <div class="text-lg">{{ $match->homeName }}</div>
                     </div>
                     <div>
-                        <div class="text-blue-400 uppercase">Guest</div>
+                        <div class="text-blue-400 uppercase">Gast</div>
                         <div class="text-lg">{{ $match->guestName }}</div>
                     </div>
                 </div>
