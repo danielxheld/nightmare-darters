@@ -11,11 +11,7 @@ new class extends Component {
     #[On('match-ended')]
     public function loadMatches()
     {
-        $this->matches = Auth::user()
-            ->dartMatches()
-            ->where('status', 'ended')
-            ->latest()
-            ->take(10)
+        $this->matches = DartMatch::where('status', 'ended')
             ->get();
     }
 
@@ -26,7 +22,7 @@ new class extends Component {
 } ?>
 
 <div class="bg-neutral-850 text-white p-6 rounded-2xl max-w-lg mx-auto space-y-6">
-    <h2 class="text-xl font-bold text-white text-center">Meine Matches</h2>
+    <h2 class="text-xl font-bold text-white text-center">Match Historie</h2>
 
     @forelse ($matches as $match)
         <div class="bg-neutral-800 rounded-xl p-4 shadow-inner flex justify-between items-center">

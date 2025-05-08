@@ -7,13 +7,14 @@
         <flux:sidebar sticky stashable class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
-            <a href="#" class="me-5 text-white flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
-                Nightmare-Darters
+            <a href="#" class="block text-center" wire:navigate>
+                <img src="{{ asset('nightmare-darters-logo.png') }}" alt="Logo" class="h-[100px] w-[100px]">
             </a>
 
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="" :href="route('home')" :current="request()->routeIs('home')" wire:navigate>{{ __('Live Spiele') }}</flux:navlist.item>
+                    <flux:navlist.item icon="" :href="route('history')" :current="request()->routeIs('history')" wire:navigate>{{ __('Historie') }}</flux:navlist.item>
                     <flux:navlist.item icon="" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>@if (Auth::check()) {{ __('Mein Match') }} @else {{ __('Login') }} @endif</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
