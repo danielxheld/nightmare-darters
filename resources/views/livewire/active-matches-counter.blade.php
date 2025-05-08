@@ -8,9 +8,16 @@ new class extends Component {
     public $matches;
     public bool $confirmEnd = false;
     public $matchToEnd = null;
+    public bool $isAdmin = false;
 
     public function mount(): void
     {
+        if (Auth::check()) {
+            $user = Auth::user();
+            if ($user->id == 1 || $user->id == 2) {
+                $this->isAdmin = true;
+            }
+        }
         $this->loadMatches();
     }
 
@@ -78,12 +85,14 @@ new class extends Component {
                     {{ $match->homeScore }} <span class="text-4xl text-neutral-500">:</span> {{ $match->guestScore }}
                 </div>
 
+                @if ($isAdmin)
                 <div class="text-center">
                     <button wire:click="confirmEndMatch({{ $match->id }})"
                             class="mt-6 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-lg font-semibold">
                         Match beenden
                     </button>
                 </div>
+                @endif
 
                 @if($confirmEnd)
                     <div class="fixed inset-0 bg-opacity-60 flex items-center justify-center z-50">
