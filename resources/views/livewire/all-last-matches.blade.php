@@ -8,6 +8,8 @@ use Livewire\Attributes\On;
 new class extends Component {
     public $matches;
     public bool $isAdmin = false;
+    public bool $confirmDelete = false;
+    public $matchToDelete = null;
 
     #[On('match-ended')]
     public function loadMatches()
@@ -16,9 +18,17 @@ new class extends Component {
             ->get();
     }
 
-    public function deleteMatch($id): void
+    public function deleteMatch(): void
     {
-        DartMatch::findOrFail($id)->delete();
+        if ($this->matchToDelete) {
+            $match = DartMatch::findOrFail($this->matchToDelete);
+            if ($match) {
+                $match->delete();
+            }
+        }
+
+        $this->confirmDelete = false;
+        $this->matchToDelete = null;
         $this->loadMatches();
     }
 
@@ -32,6 +42,18 @@ new class extends Component {
             }
         }
         $this->loadMatches();
+    }
+
+    public function confirmDeleteMatch($matchId): void
+    {
+        $this->matchToDelete = $matchId;
+        $this->confirmDelete = true;
+    }
+
+    public function cancelDeleteMatch(): void
+    {
+        $this->confirmDelete = false;
+        $this->matchToDelete = null;
     }
 } ?>
 
@@ -59,7 +81,7 @@ new class extends Component {
 
                 @if($isAdmin)
                     <button
-                        wire:click="deleteMatch({{ $match->id }})"
+                        wire:click="confirmDeleteMatch({{ $match->id }})"
                         class="text-red-500 hover:text-red-700 text-sm font-semibold"
                         title="Löschen"
                     >
@@ -67,6 +89,28 @@ new class extends Component {
                     </button>
                 @endif
             </div>
+
+            @if($confirmDelete)
+                <div class="fixed inset-0 bg-opacity-60 flex items-center justify-center z-50">
+                    <div class="bg-neutral-700 p-6 rounded-xl shadow-2xl w-full max-w-sm mx-auto text-center">
+                        <p class="text-white text-lg font-semibold mb-4">
+                            Bist du sicher, dass du das Match aus der Historie löschen möchtest?
+                        </p>
+
+                        <div class="flex justify-center gap-4 mt-6">
+                            <button wire:click="deleteMatch"
+                                    class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md shadow">
+                                Ja, löschen
+                            </button>
+                            <button wire:click="cancelDeleteMatch"
+                                    class="px-4 py-2 bg-neutral-600 hover:bg-neutral-700 text-white rounded-md shadow">
+                                Abbrechen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            @endif
         </div>
     @empty
         <div class="text-center text-neutral-400">Noch keine beendeten Matches.</div>
